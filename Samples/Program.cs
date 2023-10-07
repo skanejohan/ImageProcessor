@@ -46,3 +46,23 @@ var image = new ImageProcessor().StartFromScratch(100, 100)
 new ImageProcessor().StartFromImage(image)
     .WithInvertedEllipse(50, 50, 30, 40, Color.BurlyWood)
     .Save(@"Samples\WithoutInvertedEllipseWithInvertedEllipse.png");
+
+new ImageProcessor().StartFromScratch(100, 100)
+    .WithCircle(50, 50, 40, Color.RebeccaPurple)
+    .CroppedTo(10, 10, 50, 50)
+    .Save(@"Samples\CroppedCircle.png");
+
+new ImageProcessor().StartFromScratch(100, 100)
+    .WithCircle(50, 50, 40, Color.RebeccaPurple)
+    .ResizedTo(50, 50)
+    .Save(@"Samples\ResizedCircle.png");
+
+image = new ImageProcessor().StartFromScratch(100, 100)
+    .WithCircle(50, 50, 30, Color.Green)
+    .Get();
+new ImageProcessor().StartFromScratch(100, 100)
+    .WithCircle(50, 50, 40, Color.Red)
+    .WithImage(image, -20, -20, 0.5f)
+    .WithImage(image, 20, 20)
+    .Save(@"Samples\WithImage.png");
+

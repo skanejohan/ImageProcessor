@@ -4,12 +4,18 @@ namespace ImageProcessorLib
 {
     public static class OperationRectangle
     {
+        /// <summary>
+        /// Add a rectangle with given parameters.
+        /// </summary>
         public static ImageProcessor WithRectangle(this ImageProcessor imageProcessor, int x, int y, int w, int h, Color color)
         {
             imageProcessor.AddOperation(ctx => { Apply(ctx, x, y, w, h, color); });
             return imageProcessor;
         }
 
+        /// <summary>
+        /// Remove a rectangle with given parameters.
+        /// </summary>
         public static ImageProcessor WithoutRectangle(this ImageProcessor imageProcessor, int x, int y, int w, int h)
         {
             imageProcessor.AddOperation(ctx => { Apply(ctx, x, y, w, h, Color.Black, true); });
