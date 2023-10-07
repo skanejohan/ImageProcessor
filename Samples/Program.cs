@@ -64,5 +64,19 @@ new ImageProcessor().StartFromScratch(100, 100)
     .WithCircle(50, 50, 40, Color.Red)
     .WithImage(image, -20, -20, 0.5f)
     .WithImage(image, 20, 20)
-    .Save(@"Samples\WithImage.png");
+    .Save(@"Samples\Image.png");
 
+new ImageProcessor().StartFromScratch(100, 100)
+    .WithRectangle(0, 0, 100, 100, Color.Green)
+    .WithRoundedCorners(20)
+    .Save(@"Samples\RoundedCorners.png");
+
+new ImageProcessor().StartFromScratch(600, 400)
+    .WithRectangle(0, 0, 600, 400, Color.Green)
+    .WithText("HEADER", 300, 40, Color.Black, fontName: "Courier New", fontSize: 40, horizontalAlignment: SixLabors.Fonts.HorizontalAlignment.Center)
+    .WithText(
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " + 
+        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure " + 
+        "dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", 10, 80, Color.White, 
+        fontSize: 16, wrappingLength: 200)
+    .Save(@"Samples\Text.png");
