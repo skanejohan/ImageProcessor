@@ -64,20 +64,6 @@ namespace ImageProcessorLib
             }
         }
 
-        public Image GetEdges()
-        {
-            return GetEdges(KnownEdgeDetectorKernels.Sobel);
-        }
-
-        public Image GetEdges(EdgeDetector2DKernel kernel)
-        {
-            AddOperation(ctx => ctx.DetectEdges(kernel));
-            AddOperation(ctx => ctx.AdaptiveThreshold());
-            return Get()
-                .WithTransparencySet(pixel => pixel.R == 0)
-                .WithColorConverted(pixel => pixel.R == 255, Color.Black);
-        }
-
         internal void AddOperation(Action<IImageProcessingContext> operation)
         {
             operations.Add(operation);
