@@ -2,12 +2,12 @@
 {
     public static class ExtensionsPublic
     {
-        public static Image SetTransparency(this Image image, Func<Rgba32, bool> shouldConvert)
+        public static Image WithTransparencySet(this Image image, Func<Rgba32, bool> shouldConvert)
         {
-            return image.ConvertColor(shouldConvert, Color.Transparent);
+            return image.WithColorConverted(shouldConvert, Color.Transparent);
         }
 
-        public static Image ConvertColor(this Image image, Func<Rgba32, bool> shouldConvert, Color targetColor)
+        public static Image WithColorConverted(this Image image, Func<Rgba32, bool> shouldConvert, Color targetColor)
         {
             var clonedImage = image.CloneAs<Rgba32>();
             clonedImage.ProcessPixelRows(accessor =>
