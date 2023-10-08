@@ -1,4 +1,6 @@
-﻿namespace ImageProcessorLib
+﻿using SixLabors.ImageSharp.Processing.Processors.Convolution;
+
+namespace ImageProcessorLib
 {
     public sealed class ImageProcessor
     {
@@ -49,25 +51,6 @@
         /// </summary>
         public Image Get()
         {
-            return GetModifiedImage();
-        }
-
-        /// <summary>
-        /// Generate and save the resulting image to the given file.
-        /// </summary>
-        public void Save(string fileName)
-        {
-            using var image = GetModifiedImage();
-            image.Save(fileName);
-        }
-
-        internal void AddOperation(Action<IImageProcessingContext> operation)
-        {
-            operations.Add(operation);
-        }
-
-        private Image GetModifiedImage()
-        {
             using var src = getImageFunc();
             return src.Clone(ApplyOperations);
 
@@ -78,6 +61,25 @@
                     op(ctx);
                 }
             }
+        }
+
+        public Image GetEdges()
+        {
+            return GetEdges(KnownEdgeDetectorKernels.Sobel);
+        }
+
+        public Image GetEdges(EdgeDetector2DKernel kernel)
+        {
+            AddOperation(ctx => ctx.DetectEdges(kernel));
+            AddOperation(ctx => ctx.AdaptiveThreshold());
+            return Get()
+                .WithTransparencySet(pixel => pixel.R == 0)
+                .WithColorConverted(pixel => pixel.R == 255, Color.Black);
+        }
+
+        internal void AddOperation(Action<IImageProcessingContext> operation)
+        {
+            operations.Add(operation);
         }
 
         private Func<Image> getImageFunc = () => throw new NullReferenceException("No Start method has been called");
