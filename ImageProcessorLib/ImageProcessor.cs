@@ -1,4 +1,5 @@
-﻿using SixLabors.ImageSharp.Processing.Processors.Convolution;
+﻿using ImageProcessorLib.ImageExtensions;
+using SixLabors.ImageSharp.Processing.Processors.Convolution;
 
 namespace ImageProcessorLib
 {

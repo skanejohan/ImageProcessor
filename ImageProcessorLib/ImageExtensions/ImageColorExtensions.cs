@@ -1,6 +1,6 @@
-﻿namespace ImageProcessorLib
+﻿namespace ImageProcessorLib.ImageExtensions
 {
-    public static class ExtensionsPublic
+    public static class ImageColorExtensions
     {
         public static Image WithTransparencySet(this Image image, Func<Rgba32, bool> shouldConvert)
         {
@@ -53,7 +53,7 @@
                 }
 
                 var minDist = int.MaxValue;
-                foreach(var paletteColor in palette)
+                foreach (var paletteColor in palette)
                 {
                     var dist = sourceColor.SquaredEuclideanDistance(paletteColor);
                     if (dist < minDist)
