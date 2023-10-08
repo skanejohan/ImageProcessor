@@ -1,6 +1,6 @@
 ﻿namespace ImageProcessorLib
 {
-    internal static class Extensions
+    internal static class ExtensionsInternal
     {
         public static void SetStandardGraphicsOptions(this IImageProcessingContext ctx, bool delete = false)
         {
