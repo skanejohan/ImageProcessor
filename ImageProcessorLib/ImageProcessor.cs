@@ -13,11 +13,22 @@
         }
 
         /// <summary>
-        /// Start processing of a new image, from an image loaded from the given file.
+        /// Start processing of a new image, from an image loaded from the given file. If ensureTransparency
+        /// is true, the operation will ensure that the image has an alpha channel. If you know that the image 
+        /// already has an alpha channel, set ensureTransparency to false, since adding the alpha channel is
+        /// slightly less efficient.
         /// </summary>
-        public ImageProcessor StartFromSourceFile(string file)
+        public ImageProcessor StartFromSourceFile(string file, bool ensureTransparency = false)
         {
-            getImageFunc = () => Image.Load(file);
+            getImageFunc = ensureTransparency
+            ? () =>
+                {
+                    using var loadedImage = Image.Load(file);
+                    var transparentImage = new Image<Rgba32>(loadedImage.Width, loadedImage.Height);
+                    transparentImage.Mutate(ctx => ctx.DrawImage(loadedImage, 1.0f));
+                    return transparentImage;
+                }
+            : () => Image.Load(file);
             operations.Clear();
             return this;
         }
