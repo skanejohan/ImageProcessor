@@ -11,4 +11,13 @@
     <ProjectReference Include="..\ImageProcessorLib\ImageProcessorLib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\img1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\img2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
