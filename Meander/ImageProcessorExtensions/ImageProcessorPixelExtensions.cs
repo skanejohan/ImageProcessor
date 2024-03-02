@@ -5,7 +5,7 @@
         public static Image GetExpandedToPixelSize(this ImageProcessor imageProcessor, int pixelSize, bool outline = false)
         {
             var originalImage = imageProcessor.Get().CloneAs<Rgba32>();
-            ImageProcessor.StartFromScratch(originalImage.Width * pixelSize, originalImage.Height * pixelSize);
+            var ip = ImageProcessor.StartFromScratch(originalImage.Width * pixelSize, originalImage.Height * pixelSize);
 
             originalImage.ProcessPixelRows(accessor =>
             {
@@ -15,17 +15,17 @@
                     Span<Rgba32> pixelRow = accessor.GetRowSpan(y);
                     foreach (ref Rgba32 pixel in pixelRow)
                     {
-                        imageProcessor.WithSolidRectangle(x * pixelSize, y * pixelSize, pixelSize, pixelSize, pixel);
+                        ip.WithSolidRectangle(x * pixelSize, y * pixelSize, pixelSize, pixelSize, pixel);
                         if (outline)
                         {
-                            imageProcessor.WithSolidRectangle(x * pixelSize, y * pixelSize, pixelSize, 1, Color.Black);
-                            imageProcessor.WithSolidRectangle(x * pixelSize, y * pixelSize, 1, pixelSize, Color.Black);
+                            ip.WithSolidRectangle(x * pixelSize, y * pixelSize, pixelSize, 1, Color.Black);
+                            ip.WithSolidRectangle(x * pixelSize, y * pixelSize, 1, pixelSize, Color.Black);
                         }
                         x++;
                     }
                 }
             });
-            return imageProcessor.Get();
+            return ip.Get();
         }
     }
 }

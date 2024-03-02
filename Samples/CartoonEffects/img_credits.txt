@@ -1,0 +1,2 @@
+img_house.jpg: photo by Scott Webb on Pexels (https://www.pexels.com/photo/white-and-red-wooden-house-with-fence-1029599)
+img_car.jpg: photo by Nordic Overdrive on Pexels (https://www.pexels.com/photo/red-coupe-soft-top-on-road-627678)
