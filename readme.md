@@ -144,10 +144,10 @@ Samples can be found in the [PixelEffects](https://github.com/skanejohan/Meander
         .StartFromSourceFile("img_house.jpg")
         .GetCartoonified(KnownEdgeDetectorKernels.Prewitt, 1, 1);
 ````
-<image src="Doc/House.png">
+<image src="Doc/house.png">
 
 Samples can be found in the [CartoonEffects](https://github.com/skanejohan/Meander/tree/master/Samples/CartoonEffects) project.
 
 # Additional samples
 
-The [GenerateLogo](https://github.com/skanejohan/Meander/tree/master/Samples/GenerateLogo) contains code for generating the Meander logo.
+The [GenerateLogo](https://github.com/skanejohan/Meander/tree/master/Samples/GenerateLogo) project contains code for generating the Meander logo.
