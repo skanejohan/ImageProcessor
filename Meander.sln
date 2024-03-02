@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Samples", "Samples\Samples.csproj", "{77A7A492-AA13-4C2A-BE3C-73DCF4AF6F98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Meander", "Meander\Meander.csproj", "{9432FF5A-ABBC-45A3-8879-0DFACC29BDBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageProcessorLib", "ImageProcessorLib\ImageProcessorLib.csproj", "{9432FF5A-ABBC-45A3-8879-0DFACC29BDBC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{C9605A6F-AADF-4C50-9045-24637AC753A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "General", "Samples\General\General.csproj", "{77A7A492-AA13-4C2A-BE3C-73DCF4AF6F98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateLogo", "Samples\GenerateLogo\GenerateLogo.csproj", "{80244874-AC26-4A3C-8642-7CDD84842777}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,17 @@ Global
 		{9432FF5A-ABBC-45A3-8879-0DFACC29BDBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9432FF5A-ABBC-45A3-8879-0DFACC29BDBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9432FF5A-ABBC-45A3-8879-0DFACC29BDBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80244874-AC26-4A3C-8642-7CDD84842777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80244874-AC26-4A3C-8642-7CDD84842777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80244874-AC26-4A3C-8642-7CDD84842777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80244874-AC26-4A3C-8642-7CDD84842777}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{77A7A492-AA13-4C2A-BE3C-73DCF4AF6F98} = {C9605A6F-AADF-4C50-9045-24637AC753A3}
+		{80244874-AC26-4A3C-8642-7CDD84842777} = {C9605A6F-AADF-4C50-9045-24637AC753A3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {90536147-2B7C-465B-98AD-339BFA56565C}

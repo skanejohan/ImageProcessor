@@ -5,7 +5,7 @@
         public static Image GetExpandedToPixelSize(this ImageProcessor imageProcessor, int pixelSize, bool outline = false)
         {
             var originalImage = imageProcessor.Get().CloneAs<Rgba32>();
-            imageProcessor.StartFromScratch(originalImage.Width * pixelSize, originalImage.Height * pixelSize);
+            ImageProcessor.StartFromScratch(originalImage.Width * pixelSize, originalImage.Height * pixelSize);
 
             originalImage.ProcessPixelRows(accessor =>
             {

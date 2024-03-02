@@ -49,12 +49,12 @@ namespace ImageProcessorLib.ImageProcessorExtensions
             return imageProcessor.GetCartoonified(ctx => ctx.DetectEdges(kernel), imageSigma, edgeSigma);
         }
 
-        internal static Image GetCartoonified(this ImageProcessor imageProcessor, Action<IImageProcessingContext>? detectEdges, 
+        internal static Image GetCartoonified(this ImageProcessor imageProcessor, Action<IImageProcessingContext>? detectEdges,
             float imageSigma, float edgeSigma)
         {
             var originalImage = imageProcessor.Get();
 
-            var image = imageProcessor.StartFromImage(originalImage)
+            var image = ImageProcessor.StartFromImage(originalImage)
                 .WithMutation(ctx => ctx.GaussianBlur(imageSigma))
                 .Get();
 
@@ -63,11 +63,11 @@ namespace ImageProcessorLib.ImageProcessorExtensions
                 return image;
             }
 
-            var edgeImage = imageProcessor.StartFromImage(originalImage)
+            var edgeImage = ImageProcessor.StartFromImage(originalImage)
                 .WithMutation(ctx => ctx.GaussianBlur(edgeSigma))
                 .GetEdges(detectEdges);
 
-            return imageProcessor.StartFromImage(image)
+            return ImageProcessor.StartFromImage(image)
                 .WithImage(edgeImage)
                 .Get();
         }

@@ -8,14 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ImageProcessorLib\ImageProcessorLib.csproj" />
+    <ProjectReference Include="..\..\Meander\Meander.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\img1.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Data\img2.jpg">
+    <None Update="img_water.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

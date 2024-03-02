@@ -13,8 +13,6 @@ namespace ImageProcessorLib.Utils
         /// </summary>
         public static void Generate(string sourceFile, string outputDirectory)
         {
-            var imageProcessor = new ImageProcessor();
-
             Directory.CreateDirectory(outputDirectory);
 
             Run("Laplacian3x3", ctx => ctx.DetectEdges(KnownEdgeDetectorKernels.Laplacian3x3));
@@ -29,7 +27,7 @@ namespace ImageProcessorLib.Utils
             Run("Robinson", ctx => ctx.DetectEdges(KnownEdgeDetectorKernels.Robinson));
             Run("no_edge_detection", null);
 
-            imageProcessor.StartFromSourceFile(sourceFile).Get()
+            ImageProcessor.StartFromSourceFile(sourceFile).Get()
                 .Save($"{outputDirectory}\\original_file.png");
 
             void Run(string kernel, Action<IImageProcessingContext>? detectEdges)
@@ -38,7 +36,7 @@ namespace ImageProcessorLib.Utils
                 {
                     for (var edgeSigma = 1; edgeSigma <= 5; edgeSigma+=2)
                     {
-                        imageProcessor.StartFromSourceFile(sourceFile)
+                        ImageProcessor.StartFromSourceFile(sourceFile)
                             .GetCartoonified(detectEdges, sigma, edgeSigma)
                             .Save($"{outputDirectory}\\{kernel}_{sigma}_{edgeSigma}.png");
                     }
